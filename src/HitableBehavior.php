@@ -56,6 +56,9 @@ class HitableBehavior extends Behavior
      */
     public function attach($owner)
     {
+        if (!($owner instanceof BaseActiveRecord)) {
+            throw new RuntimeException('Owner must be instance of yii\db\BaseActiveRecord');
+        }
         parent::attach($owner);
 
         if (!$this->group) {
